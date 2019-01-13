@@ -27,6 +27,9 @@ class Client(threading.Thread):
     def ipPortPair(self):
         return (self.__destIP, self.__destPort)
 
+    def getProcID(self):
+        return self.__procID
+
     def run(self):
         while self.__running:
             try:
@@ -88,4 +91,4 @@ class Client(threading.Thread):
             
         self.__sock.close()
         if self.__doneCallback:
-            self.__doneCallback(self.ipPortPair())
+            self.__doneCallback(self)

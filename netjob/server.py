@@ -94,6 +94,12 @@ class Server(threading.Thread):
         self.__running = True
         self.start()
 
+    def getSock(self):
+        return self.__serverSock
+
+    def getListenPort(self):
+        return self.__serverSock.getsockname()[1]
+
     def stop(self):
         self.__running = False
         self.__serverSock.close()
